@@ -1,7 +1,7 @@
 DOCKER_COMPOSE_FILE_REGEX = /docker-compose(.*)\.yml$/
 
 def pull_docker_compose_file(name)
-  `docker-compose -f #{name} pull`
+  exec("docker-compose -f #{name} pull")
 end
 
 file_names = Dir.entries(Dir.pwd)
