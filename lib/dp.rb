@@ -9,7 +9,9 @@ docker_compose_file_names = file_names.select do |name|
   DOCKER_COMPOSE_FILE_REGEX.match?(name)
 end
 
-if docker_compose_file_names.length === 1
+if docker_compose_file_names.empty?
+  raise "No docker compose files present"
+elsif docker_compose_file_names.length === 1
   pull_docker_compose_file(docker_compose_file_names.first)
 else
   puts "Which file?"
